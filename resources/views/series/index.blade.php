@@ -12,10 +12,12 @@
     @endif
    
     <a href="{{ route('criar_serie') }}" class="btn btn-dark mb-2">Adicionar</a>
+    <a href="{{ route('criar_categorias') }}" class="btn btn-dark mb-2">Adicionar Categoria</a>
 
     <ul class="list-group">
         @foreach($series as $serie)
-        <li class="list-group-item d-flex justify-content-between">{{$serie->nome}}
+        <li class="list-group-item d-flex justify-content-between">{{$serie->nome}}<small>{{$serie->categoriasNome}}</small>
+            
             <form method="POST" action="/series/{{$serie->id}}"
             onsubmit="return confirm('Tem certeza que deseja excluir a serie {{$serie->nome}}?')">
                 @csrf
@@ -23,7 +25,8 @@
                 <button class="btn btn-danger btn-sm">
                     <i class="far fa-trash-alt"></i>
                 </button>
-            </form>  
+            </form>
+
         </li>      
         @endforeach
     </ul>

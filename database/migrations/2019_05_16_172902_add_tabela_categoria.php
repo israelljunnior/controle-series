@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CriarTabelaSeries extends Migration
+class AddTabelaCategoria extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CriarTabelaSeries extends Migration
      */
     public function up()
     {
-        Schema::create('series', function(Blueprint $table){
-            $table->increments('id');   
-            $table->string('nome', 255);
+        Schema::table('series', function(Blueprint $table) {
+            $table->integer('categorias_id')->unsigned();
+            $table->foreign('categorias_id')->references('id')->on('categorias')->onDelete('cascade');;
+        
         });
 
     }
@@ -27,6 +28,6 @@ class CriarTabelaSeries extends Migration
      */
     public function down()
     {
-        Schema::drop('Series');
+        //
     }
 }

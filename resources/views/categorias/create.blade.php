@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('cabecalho')
-    Adicionar Série
+    Adicionar Categoria
 @endsection
 
 @section('conteudo')
@@ -19,14 +19,6 @@
         <div class="form-group">
             <label for="nome" class="">Nome</label>
             <input type="text" class="form-control" name="nome" id="nome">
-        </div>
-        <div class="form-group">
-            <label for="categorias_id" class="">Categoria</label>
-            <select name="categorias_id">
-                @foreach ($categorias as $categoria)
-                <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
-                @endforeach
-            </select>
         </div>
         <button class="btn btn-primary">Adicionar</button>
     </form>
